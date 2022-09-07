@@ -11,26 +11,33 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.credysystem.clientecartoes.cliente.application.api.ClienteRequest;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", updatable = false, unique = true, nullable = false)
+	@Column(columnDefinition = "UUID", name = "idCliente", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
+	@Column(unique = true)
 	private String nomeCompleto;
 	@NotBlank
 	@Email
+	@Column(unique = true)
 	private String email;
 	@NotBlank
 	private String celular;
@@ -40,8 +47,25 @@ public class Cliente {
 	@NotNull
 	private LocalDate dataNascimento;
 	@CPF
+	@Column(unique = true)
 	private String cpf;
+	@NotNull
+	private Integer salario;
 	@NotNull
 	private Boolean aceitaTermos;
 	private LocalDateTime dataHoraDoCadastro;
+
+	public Cliente(@Valid ClienteRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.email = clienteRequest.getEmail();
+		this.celular = clienteRequest.getCelular();
+		this.telefone = clienteRequest.getTelefone();
+		this.sexo = clienteRequest.getSexo();
+		this.dataNascimento = clienteRequest.getDataNascimento();
+		this.cpf = clienteRequest.getCpf();
+		this.salario = clienteRequest.getSalario();
+		this.aceitaTermos = clienteRequest.getAceitaTermos();
+		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
+
 }
