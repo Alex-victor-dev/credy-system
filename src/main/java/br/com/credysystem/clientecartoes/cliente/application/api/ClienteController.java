@@ -1,6 +1,7 @@
 package br.com.credysystem.clientecartoes.cliente.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -8,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.credysystem.clientecartoes.cliente.application.service.ClienteService;
+import br.com.credysystem.clientecartoes.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -32,8 +34,16 @@ public class ClienteController implements ClienteAPI {
 	public List<ClienteListResponse> getCliente() {
 		log.info("[inicia] ClienteController - getCliente");
 		List<ClienteListResponse> listaCliente = clienteService.buscaListaDeClientes();
-		log.info("[inicia] ClienteController - getCliente");
+		log.info("[finaliza] ClienteController - getCliente");
 		return listaCliente;
+	}
+
+	@Override
+	public ClienteDetalhadoResponse getClientePorId(UUID idCliente) {
+		log.info("[inicia] ClienteController - getClientePorId");
+		Cliente cliente = clienteService.buscaClienteAtravesId(idCliente);
+		log.info("[finaliza] ClienteController - getClientePorId");
+		return new ClienteDetalhadoResponse(cliente);
 	}
 
 }

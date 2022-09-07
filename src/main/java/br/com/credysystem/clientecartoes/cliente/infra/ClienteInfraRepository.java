@@ -1,11 +1,14 @@
 package br.com.credysystem.clientecartoes.cliente.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.credysystem.clientecartoes.cliente.application.repository.ClienteRepository;
 import br.com.credysystem.clientecartoes.cliente.domain.Cliente;
+import br.com.credysystem.clientecartoes.cliente.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -29,6 +32,15 @@ public class ClienteInfraRepository implements ClienteRepository {
 		log.info("[inicia] ClienteInfraRepository - buscaTodosClientes");
 		List<Cliente> cliente = clienteSpringDataJpaRepository.findAll();
 		log.info("[finaliza] ClienteInfraRepository - buscaTodosClientes");
+		return cliente;
+	}
+
+	@Override
+	public Cliente buscaClienteAtravesId(UUID idCliente) {
+		Cliente cliente = clienteSpringDataJpaRepository.findById(idCliente).orElseThrow(
+				() -> APIException
+				.build(HttpStatus
+						.NOT_FOUND, "Cliente nao encontrado id nao Existe " + idCliente));
 		return cliente;
 	}
 
