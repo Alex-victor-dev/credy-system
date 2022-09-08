@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.credysystem.clientecartoes.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.credysystem.clientecartoes.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -54,6 +55,7 @@ public class Cliente {
 	@NotNull
 	private Boolean aceitaTermos;
 	private LocalDateTime dataHoraDoCadastro;
+	private LocalDateTime dataHoraDeAlteracao;
 
 	public Cliente(@Valid ClienteRequest clienteRequest) {
 		this.nomeCompleto = clienteRequest.getNomeCompleto();
@@ -66,6 +68,18 @@ public class Cliente {
 		this.salario = clienteRequest.getSalario();
 		this.aceitaTermos = clienteRequest.getAceitaTermos();
 		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
+
+	public void alteraClientePorId(ClienteAlteracaoRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.email = clienteRequest.getEmail();
+		this.celular = clienteRequest.getCelular();
+		this.telefone = clienteRequest.getTelefone();
+		this.dataNascimento = clienteRequest.getDataNascimento();
+		this.cpf = clienteRequest.getCpf();
+		this.salario = clienteRequest.getSalario();
+		this.dataHoraDeAlteracao = LocalDateTime.now();
+
 	}
 
 }

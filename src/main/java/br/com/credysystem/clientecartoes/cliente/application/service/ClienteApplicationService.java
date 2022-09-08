@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
+import br.com.credysystem.clientecartoes.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.credysystem.clientecartoes.cliente.application.api.ClienteListResponse;
 import br.com.credysystem.clientecartoes.cliente.application.api.ClienteRequest;
 import br.com.credysystem.clientecartoes.cliente.application.api.ClienteResponse;
@@ -51,8 +52,19 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[inicia] ClienteApplicationService -  deletaClientePorId");
 		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
 		clienteRepository.deletaClientePorId(cliente);
-		log.info("[finaliza] ClienteApplicationService -  deletaClientePorId");
+		log.info("[finaliza] ClienteApplicationService - deletaClientePorId");
 
+	}
+
+	@Override
+	public void alteraClientePorId(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		log.info("[inicia] ClienteApplicationService - alteraClientePorId");
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		cliente.alteraClientePorId(clienteAlteracaoRequest);
+		clienteRepository.salva(cliente);
+		log.info("[finaliza] ClienteApplicationService - alteraClientePorId");
+
+		
 	}
 
 }

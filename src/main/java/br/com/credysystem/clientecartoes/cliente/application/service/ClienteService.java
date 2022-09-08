@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import br.com.credysystem.clientecartoes.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.credysystem.clientecartoes.cliente.application.api.ClienteListResponse;
 import br.com.credysystem.clientecartoes.cliente.application.api.ClienteRequest;
 import br.com.credysystem.clientecartoes.cliente.application.api.ClienteResponse;
@@ -19,5 +20,7 @@ public interface ClienteService {
 	Cliente buscaClienteAtravesId(UUID idCliente);
 
 	void deletaClientePorId(UUID idCliente);
+
+	void alteraClientePorId(UUID idCliente, @Valid ClienteAlteracaoRequest clienteAlteracaoRequest);
 
 }

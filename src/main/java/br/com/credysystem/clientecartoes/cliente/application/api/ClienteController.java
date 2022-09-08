@@ -54,4 +54,12 @@ public class ClienteController implements ClienteAPI {
 
 	}
 
+	@Override
+	public void alteraClientePorId(UUID idCliente, @Valid ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		log.info("[inicia] ClienteController - alteraClientePorId");
+		clienteService.alteraClientePorId(idCliente,clienteAlteracaoRequest);
+		log.info("[finaliza] ClienteController - alteraClientePorId");
+
+	}
+
 }
