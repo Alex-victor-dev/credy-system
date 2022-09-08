@@ -18,4 +18,6 @@ public interface ClienteService {
 
 	Cliente buscaClienteAtravesId(UUID idCliente);
 
+	void deletaClientePorId(UUID idCliente);
+
 }
