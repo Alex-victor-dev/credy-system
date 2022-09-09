@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.credysystem.clientecartoes.cartao.application.api.CartaoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,17 +25,26 @@ public class Cartao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "UUID", name = "idCliente", updatable = false, unique = true, nullable = false)
+	@Column(columnDefinition = "UUID", name = "idCartao", updatable = false, unique = true, nullable = false)
 	private UUID idCartao;
-	private UUID idCliente;
-	private Integer limiteDoCartao;
+	private UUID idClienteCartao;
+	private double limiteDoCartao;
 	@CPF
 	@Column(unique = true)
 	private String cpf;
 	@NotBlank
 	private String nomeCompleto;
 	@NotNull
-	private Integer salario;
+	private double salario;
 	private LocalDate dataNascimento;
+
+	public Cartao(UUID idCliente, CartaoRequest cartaoRequest) {
+		this.idClienteCartao = idCliente;
+		this.limiteDoCartao = cartaoRequest.getLimiteDoCartao();
+		this.cpf = cartaoRequest.getCpf();
+		this.nomeCompleto = cartaoRequest.getNomeCompleto();
+		this.dataNascimento = cartaoRequest.getDataNascimento();
+
+	}
 
 }

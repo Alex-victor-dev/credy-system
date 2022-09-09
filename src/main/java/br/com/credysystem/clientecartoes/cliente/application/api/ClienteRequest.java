@@ -15,7 +15,6 @@ import lombok.Getter;
 @Getter
 public class ClienteRequest {
 
-	
 	private String nomeCompleto;
 	@NotBlank
 	@Email
@@ -28,7 +27,7 @@ public class ClienteRequest {
 	private LocalDate dataNascimento;
 	@CPF
 	private String cpf;
-	private Integer salario;
+	private double salario;
 	@NotNull
 	private Boolean aceitaTermos;
 	private LocalDateTime dataHoraDoCadastro;

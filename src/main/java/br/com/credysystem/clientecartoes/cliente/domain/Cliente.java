@@ -51,7 +51,7 @@ public class Cliente {
 	@Column(unique = true)
 	private String cpf;
 	@NotNull
-	private Integer salario;
+	private double salario;
 	@NotNull
 	private Boolean aceitaTermos;
 	private LocalDateTime dataHoraDoCadastro;

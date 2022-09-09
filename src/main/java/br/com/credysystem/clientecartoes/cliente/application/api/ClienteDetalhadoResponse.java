@@ -18,7 +18,7 @@ public class ClienteDetalhadoResponse {
 	private Sexo sexo;
 	private LocalDate dataNascimento;
 	private String cpf;
-	private Integer salario;
+	private double salario;
 	private LocalDateTime dataHoraDoCadastro;
 
 	public ClienteDetalhadoResponse(Cliente cliente) {
