@@ -9,5 +9,5 @@ import br.com.credysystem.clientecartoes.cartao.domain.Cartao;
 
 public interface CartaoInfraRepositoryJpa extends JpaRepository<Cartao, UUID> {
 
-	List<Cartao> findyIdClienteCartaos(UUID idCliente);
+	List<Cartao> findyIdClienteCartao(UUID idCliente);
 }
