@@ -23,8 +23,9 @@ public class CartaoApplicationService implements CartaoService {
 	@Override
 	public CartaoResponse criaCartao(UUID idCliente, CartaoRequest cartaoRequest) {
 		log.info("[start] CartaoApplicationService - criaCartao");
-		clienteService.buscaClienteAtravesId(idCliente);
-		Cartao cartao = cartaoRepository.criaCartao(new Cartao(idCliente,cartaoRequest));
+		clienteService.buscaClienteAtravesId(idCliente).setSalario
+		(cartaoRequest.getLimiteDoCartao()* 1.3 );
+		Cartao cartao = cartaoRepository.criaCartao(new Cartao(idCliente, cartaoRequest));
 		log.info("[finish] CartaoApplicationService - criaCartao");
 		return new CartaoResponse(cartao.getIdCartao());
 	}

@@ -23,9 +23,11 @@ import br.com.credysystem.clientecartoes.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Cliente {
 

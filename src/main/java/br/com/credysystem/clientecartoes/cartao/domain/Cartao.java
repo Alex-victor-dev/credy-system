@@ -1,6 +1,7 @@
 package br.com.credysystem.clientecartoes.cartao.domain;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -35,8 +36,8 @@ public class Cartao {
 	@NotBlank
 	private String nomeCompleto;
 	@NotNull
-	private double salario;
 	private LocalDate dataNascimento;
+	private LocalDateTime dataHoraDoCadastro;
 
 	public Cartao(UUID idCliente, CartaoRequest cartaoRequest) {
 		this.idClienteCartao = idCliente;
@@ -44,6 +45,7 @@ public class Cartao {
 		this.cpf = cartaoRequest.getCpf();
 		this.nomeCompleto = cartaoRequest.getNomeCompleto();
 		this.dataNascimento = cartaoRequest.getDataNascimento();
+		this.dataHoraDoCadastro = LocalDateTime.now();
 
 	}
 
