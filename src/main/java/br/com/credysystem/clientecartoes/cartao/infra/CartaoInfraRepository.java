@@ -1,5 +1,8 @@
 package br.com.credysystem.clientecartoes.cartao.infra;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.credysystem.clientecartoes.cartao.application.repository.CartaoRepository;
@@ -19,6 +22,14 @@ public class CartaoInfraRepository implements CartaoRepository {
 		log.info("[start] CartaoInfraRepository - criaCartao");
 		cartaoInfraRepositoryJpa.save(cartao);
 		log.info("[finish] CartaoInfraRepository - criaCartao");
+		return cartao;
+	}
+
+	@Override
+	public List<Cartao> buscaCartaoDosClientes(UUID idCliente) {
+		log.info("[inicia] CartaoInfraRepository - buscaCartaoDosClientes");
+		List<Cartao> cartao = cartaoInfraRepositoryJpa.findyIdClienteCartaos(idCliente);
+		log.info("[finish] CartaoInfraRepository - buscaCartaoDosClientes");
 		return cartao;
 	}
 
