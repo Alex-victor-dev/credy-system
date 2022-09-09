@@ -37,7 +37,7 @@ public class Cartao {
 	public Cartao(UUID idCliente, CartaoRequest cartaoRequest) {
 		this.idClienteCartao = idCliente;
 		this.bandeiraCartao = cartaoRequest.getBandeiraCartao();
-		this.limiteTotal = cartaoRequest.getLimiteDoCartao();
+		this.limiteTotal = cartaoRequest.getLimiteTotal();
 
 	}
 

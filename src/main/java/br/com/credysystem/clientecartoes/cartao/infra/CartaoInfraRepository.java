@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.credysystem.clientecartoes.cartao.application.repository.CartaoRepository;
 import br.com.credysystem.clientecartoes.cartao.domain.Cartao;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;	
+import lombok.extern.log4j.Log4j2;
 
 @Repository
 @RequiredArgsConstructor
@@ -28,7 +28,7 @@ public class CartaoInfraRepository implements CartaoRepository {
 	@Override
 	public List<Cartao> buscaCartaoDosClientes(UUID idCliente) {
 		log.info("[inicia] CartaoInfraRepository - buscaCartaoDosClientes");
-		List<Cartao> cartao = cartaoInfraRepositoryJpa.findyIdClienteCartao(idCliente);
+		List<Cartao> cartao = cartaoInfraRepositoryJpa.findByIdClienteCartao(idCliente);
 		log.info("[finish] CartaoInfraRepository - buscaCartaoDosClientes");
 		return cartao;
 	}
