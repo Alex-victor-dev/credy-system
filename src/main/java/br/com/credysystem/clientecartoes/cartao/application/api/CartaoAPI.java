@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,4 +30,9 @@ public interface CartaoAPI {
 	@GetMapping(value = "/{idCartao}")
 	@ResponseStatus(code = HttpStatus.OK)
 	CartaoClienteDetalhadoResponse listaCartaoDosClientes(@PathVariable UUID idCliente, @PathVariable UUID idCartao);
+
+	@DeleteMapping(value = "/{idCartao}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	void deletaCartaoDosClientesPorId(@PathVariable UUID idCliente, @PathVariable UUID idCartao);
+
 }

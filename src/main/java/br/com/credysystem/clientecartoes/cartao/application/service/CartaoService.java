@@ -16,4 +16,6 @@ public interface CartaoService {
 
 	CartaoClienteDetalhadoResponse buscaCartaoDoClientePorId(UUID idCliente, UUID idCartao);
 
+	void deletaCartaoDoCliente(UUID idCliente, UUID idCartao);
+
 }

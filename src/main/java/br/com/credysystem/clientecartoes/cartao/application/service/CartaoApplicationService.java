@@ -46,8 +46,18 @@ public class CartaoApplicationService implements CartaoService {
 		log.info("[start] CartaoApplicationService - buscaCartaoDoClientePorId");
 		clienteService.buscaClienteAtravesId(idCliente);
 		Cartao cartao = cartaoRepository.buscaCartaoDoClientePorId(idCartao);
-		log.info("[start] CartaoApplicationService - buscaCartaoDoClientePorId");
+		log.info("[finish] CartaoApplicationService - buscaCartaoDoClientePorId");
 		return new CartaoClienteDetalhadoResponse(cartao);
+	}
+
+	@Override
+	public void deletaCartaoDoCliente(UUID idCliente, UUID idCartao) {
+		log.info("[start] CartaoApplicationService - deletaCartaoDoCliente");
+		clienteService.buscaClienteAtravesId(idCliente);
+		Cartao cartao = cartaoRepository.buscaCartaoDoClientePorId(idCartao);
+		cartaoRepository.deletaCartao(cartao);
+		log.info("[finish] CartaoApplicationService - deletaCartaoDoCliente");
+
 	}
 
 }

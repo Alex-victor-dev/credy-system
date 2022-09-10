@@ -13,4 +13,6 @@ public interface CartaoRepository {
 
 	Cartao buscaCartaoDoClientePorId(UUID idCartao);
 
+	void deletaCartao(Cartao cartao);
+
 }

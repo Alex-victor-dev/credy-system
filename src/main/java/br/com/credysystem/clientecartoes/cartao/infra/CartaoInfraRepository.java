@@ -43,4 +43,12 @@ public class CartaoInfraRepository implements CartaoRepository {
 		return cartao;
 	}
 
+	@Override
+	public void deletaCartao(Cartao cartao) {
+		log.info("[inicia] CartaoInfraRepository - deletaCartao");
+		cartaoInfraRepositoryJpa.delete(cartao);
+		log.info("[inicia] CartaoInfraRepository - deletaCartao");
+
+	}
+
 }

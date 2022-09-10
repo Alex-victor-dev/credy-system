@@ -44,4 +44,13 @@ public class CartaoController implements CartaoAPI {
 		return cartao;
 	}
 
+	@Override
+	public void deletaCartaoDosClientesPorId(UUID idCliente, UUID idCartao) {
+		log.info("[inicia] CartaoController - deletaCartaoDosClientesPorId");
+		log.info("[idCliente] {} - [idCartao] {}", idCliente, idCartao);
+		cartaoService.deletaCartaoDoCliente(idCliente, idCartao);
+		log.info("[finaliza] CartaoController - deletaCartaoDosClientesPorId");
+
+	}
+
 }
