@@ -25,4 +25,8 @@ public interface CartaoAPI {
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	List<CartaoClienteListResponse> listaCartaoDosClientes(@PathVariable UUID idCliente);
+
+	@GetMapping(value = "/{idCartao}")
+	@ResponseStatus(code = HttpStatus.OK)
+	CartaoClienteDetalhadoResponse listaCartaoDosClientes(@PathVariable UUID idCliente, @PathVariable UUID idCartao);
 }

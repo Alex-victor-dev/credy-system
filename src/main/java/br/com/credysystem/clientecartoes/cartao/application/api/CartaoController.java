@@ -36,4 +36,12 @@ public class CartaoController implements CartaoAPI {
 		return cartaoList;
 	}
 
+	@Override
+	public CartaoClienteDetalhadoResponse listaCartaoDosClientes(UUID idCliente, UUID idCartao) {
+		log.info("[inicia] CartaoController - listaCartaoDosClientes");
+		log.info("[idCliente] {} - [idCartao] {}", idCliente, idCartao);
+		CartaoClienteDetalhadoResponse cartao = cartaoService.buscaCartaoDoClientePorId(idCliente, idCartao);
+		return cartao;
+	}
+
 }

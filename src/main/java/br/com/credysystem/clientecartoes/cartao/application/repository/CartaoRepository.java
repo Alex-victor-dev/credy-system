@@ -11,4 +11,6 @@ public interface CartaoRepository {
 
 	List<Cartao> buscaCartaoDosClientes(UUID idCliente);
 
+	Cartao buscaCartaoDoClientePorId(UUID idCartao);
+
 }

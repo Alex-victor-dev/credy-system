@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.credysystem.clientecartoes.cartao.application.api.CartaoClienteDetalhadoResponse;
 import br.com.credysystem.clientecartoes.cartao.application.api.CartaoClienteListResponse;
 import br.com.credysystem.clientecartoes.cartao.application.api.CartaoRequest;
 import br.com.credysystem.clientecartoes.cartao.application.api.CartaoResponse;
@@ -34,10 +35,19 @@ public class CartaoApplicationService implements CartaoService {
 	@Override
 	public List<CartaoClienteListResponse> buscaCartaoDosClientes(UUID idCliente) {
 		log.info("[start] CartaoApplicationService - buscaCartaoDosClientes");
-		log.info("[finish] CartaoApplicationService - buscaCartaoDosClientes");
 		clienteService.buscaClienteAtravesId(idCliente);
 		List<Cartao> cartao = cartaoRepository.buscaCartaoDosClientes(idCliente);
+		log.info("[finish] CartaoApplicationService - buscaCartaoDosClientes");
 		return CartaoClienteListResponse.converte(cartao);
+	}
+
+	@Override
+	public CartaoClienteDetalhadoResponse buscaCartaoDoClientePorId(UUID idCliente, UUID idCartao) {
+		log.info("[start] CartaoApplicationService - buscaCartaoDoClientePorId");
+		clienteService.buscaClienteAtravesId(idCliente);
+		Cartao cartao = cartaoRepository.buscaCartaoDoClientePorId(idCartao);
+		log.info("[start] CartaoApplicationService - buscaCartaoDoClientePorId");
+		return new CartaoClienteDetalhadoResponse(cartao);
 	}
 
 }
