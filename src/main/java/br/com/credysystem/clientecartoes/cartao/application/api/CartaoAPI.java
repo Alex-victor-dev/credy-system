@@ -29,7 +29,7 @@ public interface CartaoAPI {
 
 	@GetMapping(value = "/{idCartao}")
 	@ResponseStatus(code = HttpStatus.OK)
-	CartaoClienteDetalhadoResponse listaCartaoDosClientes(@PathVariable UUID idCliente, @PathVariable UUID idCartao);
+	CartaoClienteDetalhadoResponse listaCartaoDetalhadamente(@PathVariable UUID idCliente, @PathVariable UUID idCartao);
 
 	@DeleteMapping(value = "/{idCartao}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
